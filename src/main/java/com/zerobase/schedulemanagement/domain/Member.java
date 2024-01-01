@@ -14,14 +14,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Table(name = "user")
+@Table(name = "member")
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class Member {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -22,15 +22,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class UserSchedule {
+public class MemberSchedule {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "member_id")
   @ManyToOne
-  private User user;
+  private Member member;
 
   @JoinColumn(name = "schedule_id")
   @ManyToOne
