@@ -1,4 +1,4 @@
-package com.zerobase.schedulemanagement.domain;
+package com.zerobase.schedulemanagement.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
