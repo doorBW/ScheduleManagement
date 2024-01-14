@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,7 @@ public class ScheduleController {
   @GetMapping("/{id}")
   public ResponseDto<ScheduleResponseDto> getSchedule(
       @RequestHeader(name = "MEMBER-ID") Long memberId,
-      @RequestParam(name = "id") Long id) {
+      @PathVariable(name = "id") Long id) {
     return ResponseDto.of(scheduleService.getSchedule(id, memberId));
   }
 }
