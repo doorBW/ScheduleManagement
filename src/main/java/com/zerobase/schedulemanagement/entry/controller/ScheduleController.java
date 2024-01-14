@@ -2,6 +2,8 @@ package com.zerobase.schedulemanagement.entry.controller;
 
 import com.zerobase.schedulemanagement.domain.service.ScheduleService;
 import com.zerobase.schedulemanagement.entry.dto.ResponseDto;
+import com.zerobase.schedulemanagement.entry.dto.schedule.CreateScheduleParamDto;
+import com.zerobase.schedulemanagement.entry.dto.schedule.CreateScheduleRequestDto;
 import com.zerobase.schedulemanagement.entry.dto.schedule.ScheduleResponseDto;
 import com.zerobase.schedulemanagement.entry.dto.schedule.SimplifiedScheduleResponseDto;
 import java.util.List;
@@ -9,9 +11,10 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,5 +37,15 @@ public class ScheduleController {
       @RequestHeader(name = "MEMBER-ID") Long memberId,
       @PathVariable(name = "id") Long id) {
     return ResponseDto.of(scheduleService.getSchedule(id, memberId));
+  }
+
+  @PostMapping
+  public ResponseDto<Long> createSchedule(@RequestHeader(name = "MEMBER-ID") Long memberId,
+                                          @RequestBody CreateScheduleRequestDto dto) {
+    return ResponseDto.of(scheduleService.createSchedule(CreateScheduleParamDto.builder()
+                                                                               .schedule(dto.toEntity(memberId))
+                                                                               .participationIds(
+                                                                                   dto.getParticipationIds())
+                                                                               .build()));
   }
 }
