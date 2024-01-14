@@ -1,11 +1,10 @@
 package com.zerobase.schedulemanagement.entry.dto.schedule;
 
-import com.zerobase.schedulemanagement.domain.entity.Schedule;
 import java.util.List;
 import lombok.Data;
 
 @Data
-public class CreateScheduleRequestDto {
+public class UpdateScheduleRequestDto {
 
   private String title;
   private String description;
@@ -13,8 +12,9 @@ public class CreateScheduleRequestDto {
   private Long endAt;
   private List<Long> participationIds;
 
-  public CreateScheduleParamDto toParam(Long memberId){
-    return CreateScheduleParamDto.builder()
+  public UpdateScheduleParamDto toParam(Long scheduleId, Long memberId) {
+    return UpdateScheduleParamDto.builder()
+                                 .scheduleId(scheduleId)
                                  .memberId(memberId)
                                  .title(this.getTitle())
                                  .description(this.getDescription())

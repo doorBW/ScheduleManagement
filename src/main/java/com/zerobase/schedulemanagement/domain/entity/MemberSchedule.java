@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Table(name = "user_schedule")
+@Table(name = "member_schedule")
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
